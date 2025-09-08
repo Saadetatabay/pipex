@@ -12,16 +12,18 @@ int main()
         //child
         int x;
         read(fd[0],&x,sizeof(int));
+        printf("received %d \n",x);
         x *= 4;
         write(fd[1],&x,sizeof(int));
+        printf("calculated %d \n",x);
     }
     else
     {
         srand(time(NULL));
         int y = rand() % 10;
-        printf("y %d",y);
         write(fd[1],&y,sizeof(int));
+        printf("wrote %d\n",y);
         read(fd[0],&y,sizeof(int));
-        printf("%d",y);
+        printf("result %d",y);
     }
 }
