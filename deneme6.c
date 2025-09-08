@@ -18,11 +18,24 @@ int main() {
     if (pid == 0)
     {
         printf("child process\n");
-        execlp("ls","ls","-l",NULL);
+        int err = execlp("ls","ls","-l",NULL);
+        if (err == -1)
+        {
+            printf("could not find program to execute\n");
+            return (5);
+        }
     }
     else{
         printf("parent process,child process working\n");
-        wait(NULL);
-        printf("SUCCESS\n"); 
+        int status;
+        wait(&status);
+        if (WIFEXITED(status)) //childin döndüğü değeri alır exit status
+        {
+            int exit_code = WEXITSTATUS(status); //child return değerini aldık
+            printf("Child exited with code: %d\n",exit_code);
+            if (exit_code == 0)
+                printf("SUCCESS\n"); 
+        }
     }
+    return 0;
 }
