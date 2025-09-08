@@ -9,7 +9,7 @@ int main(int argc,char *argv[])
     int pid2 = fork();
     if(pid == 0)
     {
-        if(pid2== 0)
+        if(pid2 == 0)
             printf("child of child of parnet\n");
         else
             printf("child of parent\n");

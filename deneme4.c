@@ -4,7 +4,7 @@
 #include<time.h>
 int main()
 {
-    int fd[2];
+    int fd[2]; //fd[0] okuma ucu fd[1] yazma ucu
     pipe(fd);
     int id = fork();
     if (id == 0)
