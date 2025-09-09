@@ -1,11 +1,14 @@
-total 48
--rwxr-xr-x 1 satabay satabay 16304 Sep  9 11:47 a.out
+saadet
+child process
+total 60
+-rwxr-xr-x 1 satabay satabay 16392 Sep  9 12:13 a.out
 -rw-r--r-- 1 satabay satabay   489 Sep  3 16:27 deneme.c
 -rw-r--r-- 1 satabay satabay   925 Sep  8 17:04 deneme1.c
 -rw-r--r-- 1 satabay satabay   569 Sep  4 16:13 deneme2.c
 -rw-r--r-- 1 satabay satabay   848 Sep  4 17:19 deneme3.c
 -rw-r--r-- 1 satabay satabay   608 Sep  8 17:28 deneme4.c
 -rw-r--r-- 1 satabay satabay   604 Sep  8 17:53 deneme5.c
--rw-r--r-- 1 satabay satabay  1384 Sep  9 11:47 deneme6.c
+-rw-r--r-- 1 satabay satabay  1383 Sep  9 12:05 deneme6.c
 -rw-r--r-- 1 satabay satabay  1005 Sep  8 21:57 deneme7.c
--rwxr-xr-x 1 satabay satabay     0 Sep  9 11:47 output.txt
+-rw-r--r-- 1 satabay satabay  1409 Sep  9 12:13 deneme8.c
+-rwxr-xr-x 1 satabay satabay   643 Sep  9 12:14 output.txt
