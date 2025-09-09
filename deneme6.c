@@ -3,6 +3,7 @@
 #include<unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include<fcntl.h>
 int main() {
     // printf("Benim programım başladı!\n");
 
@@ -17,6 +18,11 @@ int main() {
     int pid = fork();
     if (pid == 0)
     {
+        int fd = open("output.txt", O_CREAT | O_WRONLY,0777);
+        dup2(fd,1); //dup2(oldfd,newfd) önce newfd açıksa kapatılır sonra oldfd nin kopyası buraya yerleştirilir
+        close(fd);
+        printf("saadet");
+
         printf("child process\n");
         int err = execlp("ls","ls","-l",NULL);
         if (err == -1)
