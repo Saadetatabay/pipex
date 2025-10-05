@@ -2,6 +2,7 @@
 #include<unistd.h>
 #include <stdlib.h>
 #include<time.h>
+#include<wait.h>
 int main()
 {
     int fd[2]; //fd[0] okuma ucu fd[1] yazma ucu
@@ -23,6 +24,7 @@ int main()
         int y = rand() % 10;
         write(fd[1],&y,sizeof(int));
         printf("wrote %d\n",y);
+        wait(NULL);
         read(fd[0],&y,sizeof(int));
         printf("result %d",y);
     }

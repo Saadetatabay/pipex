@@ -2,6 +2,7 @@
 #include<unistd.h>
 #include <stdlib.h>
 #include<time.h>
+#include<wait.h>
 int main()
 {
     int p1[2];
@@ -25,6 +26,7 @@ int main()
         int y = rand() % 10;
         write(p2[1],&y,sizeof(int));
         printf("wrote %d\n",y);
+        wait(NULL);
         read(p1[0],&y,sizeof(int));
         printf("result %d",y);
     }

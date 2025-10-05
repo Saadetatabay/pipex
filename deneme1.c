@@ -22,6 +22,7 @@ int main(int argc,char *argv[])
         else
         printf("parent\n");
     }
+    //wait(NULL) child processin bitmesini bekler ve childın pid sini döner
     while(wait(NULL)!=-1 || errno != ECHILD)
     {
         printf("waited for a child to finish\n");

@@ -18,12 +18,13 @@ int main() {
     int pid = fork();
     if (pid == 0)
     {
-        int fd = open("output.txt", O_CREAT | O_WRONLY,0777);
+        int fd = open("output.txt", O_CREAT | O_WRONLY | O_TRUNC,0777);
         dup2(fd,1); //dup2(oldfd,newfd) önce newfd açıksa kapatılır sonra oldfd nin kopyası buraya yerleştirilir
-        close(fd);
+        close(fd); //fd nin kendisi gerekmez zaten stdout yönlendirilidi
         printf("saadet");
 
         printf("child process\n");
+        fflush(stdout);
         int err = execlp("ls","ls","-l",NULL);
         if (err == -1)
         {
