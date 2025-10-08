@@ -6,7 +6,7 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:39:57 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/08 13:41:20 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/08 15:04:19 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	int		word_c;
 	char	**splitted;
 
-	if (s[0] == '\0')
+	if (s == NULL)
 		word_c = 0;
 	else
 		word_c = word_count(s, c);

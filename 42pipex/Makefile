@@ -1,20 +1,25 @@
-SRC = pipex.c utils.c
-
-OBJ = $(SRC:.c=.o)
+SRC = pipex.c utils.c utils2.c
 
 CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-NAME = pipex.a
+LIB = pipex.a
 
-all : $(NAME)
+NAME = pipex
 
-$(NAME) : $(OBJ)
-		ar rcs $(NAME) $(OBJ)
+OBJ = $(SRC:.c=.o)
 
-%.o : %.c
-		$(CC) -c $< -o $@
+all: $(LIB) $(NAME)
+
+$(LIB): $(OBJ)
+	ar rcs $(LIB) $(OBJ)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean : 
 		rm -f $(OBJ)
