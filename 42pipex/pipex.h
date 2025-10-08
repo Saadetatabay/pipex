@@ -6,12 +6,12 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:42:12 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/08 14:49:15 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/08 16:07:25 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
-#define PIPEX_H
+# define PIPEX_H
 
 # include <stdlib.h>
 # include <unistd.h>
