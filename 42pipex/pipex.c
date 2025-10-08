@@ -6,7 +6,7 @@
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:58 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/08 15:09:48 by satabay          ###   ########.fr       */
+/*   Updated: 2025/10/08 15:40:43 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	first_process(char *argv[], char *env[], int fd[])
 
 	infile_fd = open(argv[1], O_RDONLY);
 	if (infile_fd < 0)
-		exit(1) ;
+		exit(1);
 	arg = ft_split(argv[2], ' ');
 	if (!arg)
 		exit(1);
@@ -78,7 +78,6 @@ void	first_process(char *argv[], char *env[], int fd[])
 	if (!path)
 	{
 		free_splitt(arg);
-		perror("path null");
 		exit(1);
 	}
 	dup2(infile_fd, 0);

@@ -1,1 +1,12 @@
-0
+infile.txt
+Makefile
+outfile.txt
+pipex
+pipex.a
+pipex.c
+pipex.h
+pipex.o
+utils2.c
+utils2.o
+utils.c
+utils.o
