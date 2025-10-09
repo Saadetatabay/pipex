@@ -1,12 +1,17 @@
-infile.txt
-Makefile
-outfile.txt
-pipex
-pipex.a
-pipex.c
-pipex.h
-pipex.o
-utils2.c
-utils2.o
-utils.c
-utils.o
+total 92
+-rw-r--r-- 1 satabay satabay   397 Oct  9 13:13 Makefile
+-rw-r--r-- 1 satabay satabay    17 Oct  9 12:28 infile.txt
+-rw-r--r-- 1 satabay satabay  1138 Oct  9 13:14 main.c
+-rw-r--r-- 1 satabay satabay  1792 Oct  9 13:35 main.o
+-rw-r--r-- 1 satabay satabay     0 Oct  9 13:35 outfile.txt
+-rwxr-xr-x 1 satabay satabay 17128 Oct  9 13:35 pipex
+-rw-r--r-- 1 satabay satabay 13560 Oct  9 13:35 pipex.a
+-rw-r--r-- 1 satabay satabay  2684 Oct  9 13:34 pipex.c
+-rw-r--r-- 1 satabay satabay  1570 Oct  9 12:40 pipex.h
+-rw-r--r-- 1 satabay satabay  4448 Oct  9 13:35 pipex.o
+-rw-r--r-- 1 satabay satabay  2013 Oct  9 12:48 split.c
+-rw-r--r-- 1 satabay satabay  2464 Oct  9 13:35 split.o
+-rw-r--r-- 1 satabay satabay  1318 Oct  9 12:47 utils.c
+-rw-r--r-- 1 satabay satabay  1816 Oct  9 13:35 utils.o
+-rw-r--r-- 1 satabay satabay  2062 Oct  9 12:28 utils2.c
+-rw-r--r-- 1 satabay satabay  2496 Oct  9 13:35 utils2.o

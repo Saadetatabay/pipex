@@ -1,48 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   main .c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satabay <satabay@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 13:39:57 by satabay           #+#    #+#             */
-/*   Updated: 2025/10/08 15:04:19 by satabay          ###   ########.fr       */
+/*   Created: 2025/09/10 11:31:58 by satabay           #+#    #+#             */
+/*   Updated: 2025/10/08 15:40:43 by satabay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strdup(const char *s)
+int	main(int argc, char *argv[], char *env[])
 {
-	size_t	i;
-	size_t	len;
-	char	*copy;
+	int	fd[2];
+	int	pid1;
+	int	pid2;
 
-	len = ft_strlen(s);
-	copy = malloc(sizeof(char) * (len + 1));
-	if (!copy)
-		return (0);
-	i = 0;
-	while (i < len)
+	if (argc == 5)
 	{
-		copy[i] = s[i];
-		i++;
+		if (pipe(fd) == -1)
+			return (1);
+		children(argv, env, fd);
 	}
-	copy[i] = '\0';
-	return (copy);
-}
-
-void	free_splitt(char	**splitted)
-{
-	int	i;
-
-	i = 0;
-	if (!splitted)
-		return ;
-	while (splitted[i])
+	else
 	{
-		free(splitted[i]);
-		i++;
+		printf("enter valid arg");
+		return (1);
 	}
-	free(splitted);
 }

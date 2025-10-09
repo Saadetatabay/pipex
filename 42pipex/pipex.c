@@ -12,53 +12,54 @@
 
 #include "pipex.h"
 
-void	free_splitt(char	**splitted)
-{
-	int	i;
-
-	i = 0;
-	if (!splitted)
-		return ;
-	while (splitted[i])
-	{
-		free(splitted[i]);
-		i++;
-	}
-	free(splitted);
-}
-
 char	*find_path(char *arg, char *env[])
 {
 	int		i;
-	int		j;
-	char	**paths;
-	char	*path1;
-	char	*path2;
+	char	*ret;
+	char	**envs;
 
 	i = 0;
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
 		{
-			paths = ft_split(env[i] + 5, ':');
-			j = 0;
-			while (paths[j])
-			{
-				path1 = ft_strjoin(paths[j], "/");
-				path2 = ft_strjoin(path1, arg);
-				free(path1);
-				if (access(path2, X_OK) == 0)
-				{
-					free_splitt(paths);
-					return (path2);
-				}
-				free(path2);
-				j++;
-			}
-			free_splitt(paths);
+			envs = ft_split(env[i] + 5, ':');
+			if (!envs)
+				return (NULL);
+			ret = accesible(envs, arg);
+			if (ret)
+				return (ret);
 		}
 		i++;
 	}
+	return (NULL);
+}
+
+char	*accesible(char	**envs, char *arg)
+{
+	int		j;
+	char	*temp;
+	char	*acces_path;
+
+	j = 0;
+	while (envs[j])
+	{
+		temp = ft_strjoin(envs[j], "/");
+		if (!temp)
+			break ;
+		acces_path = ft_strjoin(temp, arg);
+		free(temp);
+		if (!acces_path)
+			break ;
+		if (access(acces_path, X_OK) == 0)
+		{
+			free_splitt(envs);
+			return (acces_path);
+		}
+		free(acces_path);
+		j++;
+	}
+	free_splitt(envs);
 	return (NULL);
 }
 
@@ -98,7 +99,7 @@ void	sec_process(char *argv[], char *env[], int fd[])
 
 	outfile_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile_fd < 0)
-		return ;
+		exit(1);
 	arg = ft_split(argv[3], ' ');
 	if (!arg)
 		exit(1);
@@ -118,34 +119,23 @@ void	sec_process(char *argv[], char *env[], int fd[])
 	exit(1);
 }
 
-int	main(int argc, char *argv[], char *env[])
+void	children(char *argv[], char *env[], int fd[])
 {
-	int	fd[2];
 	int	pid1;
 	int	pid2;
 
-	if (argc == 5)
-	{
-		if (pipe(fd) == -1)
-			return (1);
-		pid1 = fork();
-		if (pid1 < 0)
-			exit(1);
-		if (pid1 == 0)
-			first_process(argv, env, fd);
-		pid2 = fork();
-		if (pid2 < 0)
-			exit(1);
-		if (pid2 == 0)
-			sec_process(argv, env, fd);
-		close(fd[0]);
-		close(fd[1]);
-		waitpid(pid1, NULL, 0);
-		waitpid(pid2, NULL, 0);
-	}
-	else
-	{
-		printf("enter valid arg");
-		return (1);
-	}
+	pid1 = fork();
+	if (pid1 < 0)
+		exit(1);
+	if (pid1 == 0)
+		first_process(argv, env, fd);
+	pid2 = fork();
+	if (pid2 < 0)
+		exit(1);
+	if (pid2 == 0)
+		sec_process(argv, env, fd);
+	close(fd[0]);
+	close(fd[1]);
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
 }

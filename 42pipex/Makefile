@@ -1,4 +1,4 @@
-SRC = pipex.c utils.c utils2.c
+SRC = main.c pipex.c utils.c utils2.c split.c
 
 CC = cc
 

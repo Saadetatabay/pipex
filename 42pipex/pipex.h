@@ -30,5 +30,6 @@ void	sec_process(char *argv[], char *env[], int fd[]);
 void	first_process(char *argv[], char *env[], int fd[]);
 char	*find_path(char *arg, char *env[]);
 void	free_splitt(char	**splitted);
+void	children(char *argv[], char *env[], int fd[]);
 
 #endif
